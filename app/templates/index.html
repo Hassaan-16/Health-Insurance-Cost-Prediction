@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insurance Cost Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <main class="container">
+    <section class="panel">
+      <h1>Health Insurance Cost Predictor</h1>
+      <p class="subtitle">Converted from Team_7 notebook workflow.</p>
+
+      <form id="predict-form" class="form-grid">
+        <label>Age
+          <input type="number" name="age" min="18" max="100" value="30" required>
+        </label>
+
+        <label>BMI
+          <input type="number" name="bmi" min="10" max="70" step="0.001" value="27.500" required>
+        </label>
+
+        <label>Children
+          <input type="number" name="children" min="0" max="10" value="1" required>
+        </label>
+
+        <label>Sex
+          <select name="sex" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </label>
+
+        <label>Smoker
+          <select name="smoker" required>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </label>
+
+        <label>Region
+          <select name="region" required>
+            <option value="northeast">Northeast</option>
+            <option value="northwest">Northwest</option>
+            <option value="southeast">Southeast</option>
+            <option value="southwest">Southwest</option>
+          </select>
+        </label>
+
+        <label>Actual Annual Charge (Optional)
+          <input type="number" name="actual_charge" min="0" step="0.01" placeholder="e.g. 9193.00">
+        </label>
+
+        <button type="submit" class="primary">Predict Charges</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Prediction</h2>
+      <div id="result" class="result empty">Submit the form to estimate annual insurance charges.</div>
+      <button id="retrain-btn" class="secondary" type="button">Retrain Model</button>
+      <pre id="meta" class="meta"></pre>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
